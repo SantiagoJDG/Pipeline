@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
 
+
 class Personal_data(models.Model):
 
     #Using User model from django
