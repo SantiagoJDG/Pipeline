@@ -6,6 +6,8 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from authenticator.models import Personal_data
 from django.contrib.auth.models import User
 
+
+
 @admin.register(Personal_data)
 class authenticator_admin(admin.ModelAdmin):
 
