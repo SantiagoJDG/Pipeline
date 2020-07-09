@@ -1,2 +1,2 @@
 # Pipeline
-Pipeline design for practice 
+practice Pipeline designing 
