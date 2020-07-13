@@ -1,7 +1,8 @@
 #Django
 from django.shortcuts import render
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+from django.shortcuts import render
 
 #Local model
 from authenticator.models import Personal_data
@@ -11,21 +12,17 @@ from authenticator.models import Personal_data
 def user_creation(request):
 
     if request.method == 'POST':
-
-        username = request.POST['username']
+        
+        username = request.POST['Username']
         password = request.POST['password']
-        password_conf = request.POST['password_conf']
-
-        if password != password_conf:
-            return f'Error'
-        else:
-            return f'Password accepted'
-
         user = authenticate(username=username, password=password)
         if user:
-            user = User.objects.create_user(username=username, password=password)
-        else: 
-            f'Django Authentication Error'
+            login(request, user)
+            return render(request, 'login.html')
+        else:
+            return render(request, 'login.html', {'error': 'Invalid username and password'})
+
+    return render(request, 'login.html')
 
 
 #In another template, the completion of user data 
