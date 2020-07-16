@@ -6,5 +6,6 @@ from authenticator import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('login/', auth_views.user_creation, name='auth'),
+    path('login/', auth_views.login_view, name='auth'),
+    path('user_creation/', auth_views.create_users, name='creation')
 ]
