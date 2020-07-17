@@ -1,14 +1,13 @@
 #Django
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User, AnonymousUser
-from django.shortcuts import render
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
 
 #Local model
 from authenticator.models import Personal_data
 
 from django.db.utils import IntegrityError
-
 
 
 #User creation in admin 
@@ -21,9 +20,7 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return render(request, 'login.html', {'error': 'Existing User'})
-        elif AnonymousUser:
-            return render(request, 'create_users.html')
+            return render(request, 'step_two.html')
         else:
             return render(request, 'login.html', {'error': 'Invalid username and password'})
 
@@ -49,22 +46,29 @@ def create_users(request):
         user.email = request.POST['email']
         user.last_name = request.POST['last_name']
         user.first_name = request.POST['first_name']
-        user.nationality = request.POST['nationality']
-        user.city = request.POST['city']
-        user.birth_date = request.POST['birth_date']
-        user.height = request.POST['height']
-        user.weight = request.POST['weight']
+        nationality = request.POST['nationality']
+        city = request.POST['city']
+        birth_date = request.POST['birth_date']
+        height = request.POST['height']
+        weigth = request.POST['weight']
         
-        personal_data = Personal_data(user=user)
-        personal_data.save()
         user.save()
-        
+        personal_data = Personal_data(user=user, city=city, nationality=nationality, birth_date=birth_date, height=height, weigth=weigth)
+        personal_data.save()  
 
-        
+        return render(request, 'step_two.html')
+
+    return render(request, 'create_users.html')
+
+def show_data(request):
+    pass 
     
-    return(request, 'create_users.html')
+    return(request, 'step_two.html')
 
-
+def logout_view(request):
+    
+    logout(request)
+    return render(request, 'login.html')
 
 
         
