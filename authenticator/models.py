@@ -6,6 +6,16 @@ from datetime import datetime
 
 class Personal_data(models.Model):
 
+    FEMALE = 'F'
+    MALE = 'M'
+    NOT_IDENTIFIED = 'NI'
+
+    GENDER_CHOICES = [
+        ( MALE, 'M'),
+        ( FEMALE, 'F'),
+        ( NOT_IDENTIFIED, 'NI')
+    ]
+    
     #Using User model from django
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
@@ -15,11 +25,16 @@ class Personal_data(models.Model):
     birth_date = models.DateField(blank=True, null=True)
     height = models.DecimalField(max_digits=3, decimal_places=2, blank=True, null=True)
     weigth = models.IntegerField(blank=True, null=True)
+    gender = models.CharField(
+
+            choices = GENDER_CHOICES,
+            max_length=3,
+            blank=True
+        )
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return self.user.username 
+    
     
     
 
