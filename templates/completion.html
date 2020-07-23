@@ -33,9 +33,9 @@
         <div class="form-group">
         <label for="gender">Gender: </label>
         <select name="gender" class="selectpicker" data-title="Select Gender" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
-        {% for gen in gender %}
-            <option value="{{ M }}"{% if forms.fields.gender.value == M %} selected{% endif %}>{{ F }}{{ NI }}</option>
-        {% endfor %}
+            <option value="M">M</option>
+            <option value="F">F</option>
+            <option value="NI">NI</option>
         </select>
         </div>
 

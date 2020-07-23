@@ -24,7 +24,7 @@ class Personal_data(models.Model):
     city = models.CharField(max_length=15, blank=False) 
     birth_date = models.DateField(blank=True, null=True)
     height = models.DecimalField(max_digits=3, decimal_places=2, blank=True, null=True)
-    weigth = models.IntegerField(blank=True, null=True)
+    weight = models.IntegerField(blank=True, null=True)
     gender = models.CharField(
 
             choices = GENDER_CHOICES,

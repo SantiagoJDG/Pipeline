@@ -19,10 +19,10 @@ class authenticator_admin(admin.ModelAdmin):
     
     fieldsets = (
         ('Birth_data', {
-            'fields': (('user','nationality', 'birth_date'),)
+            'fields': (('user','nationality', 'birth_date', 'gender'),)
         }),
         ('Actual_data', {
-            'fields': (('city', 'height', 'weigth'),),
+            'fields': (('city', 'height', 'weight'),),
         }),
         ('Meta_data', {
             'fields': (('created', 'modified',),),
