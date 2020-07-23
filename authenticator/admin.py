@@ -14,7 +14,7 @@ class authenticator_admin(admin.ModelAdmin):
     list_display = ('pk', 'user', 'nationality', 'birth_date')
     list_display_links = ('pk',)
     list_editable = ('birth_date', 'user' )
-    search_fields = ('user__email', 'user__first_name', 'user__last_name', )
+    search_fields = ( 'user__first_name', 'user__username', 'user__email', 'user__last_name', )
     list_filter = ('created', 'modified')
     
     fieldsets = (

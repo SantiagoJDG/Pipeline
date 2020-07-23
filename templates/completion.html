@@ -32,7 +32,11 @@
 
         <div class="form-group">
         <label for="gender">Gender: </label>
-        <input id="gender" type="choice" name="gender" value="{{ personal_data.gender }}">
+        <select name="gender" class="selectpicker" data-title="Select Gender" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+        {% for gen in gender %}
+            <option value="{{ M }}"{% if forms.fields.gender.value == M %} selected{% endif %}>{{ F }}{{ NI }}</option>
+        {% endfor %}
+        </select>
         </div>
 
         <div class="form-group">
