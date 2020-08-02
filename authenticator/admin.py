@@ -14,15 +14,15 @@ class authenticator_admin(admin.ModelAdmin):
     list_display = ('pk', 'user', 'nationality', 'birth_date')
     list_display_links = ('pk',)
     list_editable = ('birth_date', 'user' )
-    search_fields = ('user__email', 'user__first_name', 'user__last_name', )
+    search_fields = ( 'user__first_name', 'user__username', 'user__email', 'user__last_name', )
     list_filter = ('created', 'modified')
     
     fieldsets = (
         ('Birth_data', {
-            'fields': (('user','nationality', 'birth_date'),)
+            'fields': (('user','nationality', 'birth_date', 'gender'),)
         }),
         ('Actual_data', {
-            'fields': (('city', 'height', 'weigth'),),
+            'fields': (('city', 'height', 'weight'),),
         }),
         ('Meta_data', {
             'fields': (('created', 'modified',),),

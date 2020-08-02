@@ -1,0 +1,31 @@
+{% block head_content %}
+<title> Log in </title>
+{% endblock head_content %}
+
+{% block container %}
+    
+    {% if error %}
+        <p class="alert alert-danger">{{ error }}</p>
+    {% endif%}
+   
+    <form method="POST" action=" {% url "auth" %}">
+        {% csrf_token %}
+        
+
+        <input type="text" placeholder="Username" name="Username" />
+        <input type="password" placeholder="Password" name="password" />
+        
+
+        <button type="submit">Log in!</button>
+
+        <p class="mt-4">Don't have an account yet? <a href="{% url "user_creation" %}">Sign up here.</a></p>
+     
+     </form>
+
+
+    
+
+
+
+
+{% endblock container %}

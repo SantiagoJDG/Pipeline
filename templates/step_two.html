@@ -1,0 +1,57 @@
+{% block head_content %}
+<title> Completion!</title>
+{% endblock %}
+
+{% block container %}
+
+    {% if error %}
+        <p class="alert alert-danger">{{ error }}</p>
+    {% endif %}
+
+    <form action="{% url 'data_completion' %}" method="POST">
+        {% csrf_token %}
+        {{ request.user }}
+        {% if form.errors %}
+            <p>{{ form.errors }}</p>
+        {% endif %}
+
+        <div class="form-group">
+        <label for="nationality">Nationality: </label>
+        <input id="nationality" type="text" name="nationality" value="{{ personal_data.nationality }}">
+        </div>
+        
+        <div class="form-group">
+        <label for="city">City: </label>
+        <input id="city" type="text" name="city" value="{{ personal_data.city }}">
+        </div>
+        
+        <div class="form-group">
+        <label for="birth_date">birth_date: </label>
+        <input id="birth_date" type="date" name="birth_date" value="{{ personal_data.birth_date }}">
+        </div>
+
+        <div class="form-group">
+        <label for="gender">Gender: </label>
+        <input id="gender" type="choice" name="gender" value="{{ personal_data.gender }}">
+        </div>
+
+        <div class="form-group">
+        <label for="weight">Weight: </label>
+        <input id="weight" type="text" name="weight" value="{{ personal_data.weight }}">
+        </div>
+
+        <div class="form-group">
+        <label for="height">Height: </label>
+        <input id="height" type="text" name="height" value="{{ personal_data.height }}">
+        </div>
+        
+
+
+
+        <button class="btn btn-primary btn-block mt-5" type="submit" value="log in">Register!</button>
+
+    </form>
+
+{% endblock %}
+   
+ <p class="mt-4">Ready to leave?<a href="{% url "logout" %}">Log out here.</a></p>
