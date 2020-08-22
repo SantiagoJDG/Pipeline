@@ -1,0 +1,26 @@
+{% block head_content %}
+<title> List Tests </title>
+{% endblock %}
+
+{% block container %}
+
+    {% if error %}
+        <p class="alert alert-danger">{{ error }}</p>
+    {% endif %}
+
+    <form action="{% url 'tests' %}" method="POST">
+        {% csrf_token %}
+        {{ request.user }}
+        {% if form.errors %}
+            <p>{{ form.errors }}</p>
+        {% endif %}
+
+    </form>
+    
+ <p class="mt-4">Rockport Test<a href="{% url "tests" %}">Do it right now.</a></p>
+ <p class="mt-4">Cooper Test<a href="{% url "tests" %}">Do it right now.</a></p>
+
+{% endblock %}
+
+
+    
