@@ -12,6 +12,6 @@ urlpatterns = [
     path('auth/usersland/', auth_views.CD_form_view, name='data_completion'),
     path('logout/', auth_views.logout_view, name='logout'),
 
-    path('tests/', e10_views.tests_view, name='tests')
+    path('tests/', e10_views.tests_views, name='tests')
 
 ]
